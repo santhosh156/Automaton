@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+      <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script>
+         var mainApp = angular.module("mainApp", []);
+         
+         mainApp.controller('FormController', function($scope,$http) {
+        	 
+            $scope.save = function(){
+            	
+              	
+               alert($scope.name);
+               alert($scope.url);
+               var data = {"name":$scope.name,"endpoint":$scope.endpoint};
+               alert(data);
+               var config = {
+                       headers : {
+                           'Content-Type': 'application/json',
+                           'Access-Control-Allow-Origin' :"*"
+                       }
+                   }
+               
+               $http.post("http://localhost:8080/AutomationWeb/soap/save",data,config).success( function(response) {
+                   alert(response);
+                });
+            }
+            
+           
+         });
+      </script>
+</head>
+<body>
+<div ng-app="mainApp" ng-controller="FormController">
+<form name="myForm" >
+ 	name : <input type="text" ng-model="name" required/>
+ 	endpoint : <input type="text" ng-model="url" />
+ 	 <button ng-click="save()">Save</button>
+ </form>
+ </div>
+</body>
+</html>

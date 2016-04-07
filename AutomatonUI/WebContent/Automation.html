@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="css/automaton.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://flowchart.js.org/flowchart-latest.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/automaton.js"></script>
+<script src="js/Step.js"></script>
+<script src="js/automaton-service.js"></script>
+
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div id="mySidenav" class="nav nav-pills nav-stacked sidenav">
+			<a id="database" href="#">Database</a> <a id="soap" href="#">Soap</a>
+			<a id="rest" href="#">Rest</a> <a id="shell" href="#">Shell</a>
+		</div>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Automation</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Configuration</a></li>
+					<li><a href="#">Executor</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</div>
+
+	<div id="executor" class="container-fluid">
+		<div class="col-sm-3"></div>
+		<div id="execanvas" class="col-sm-6"></div>
+		<div class="col-sm-3"></div>
+	</div>
+
+	<div id="home" class="container-fluid">
+		<h1 align="center"> Welcome to Automaton </h1>
+	</div>
+
+	<div id="configure" class="container-fluid">
+		<div class="col-sm-2" style="background-color: white;"></div>
+		<div class="col-sm-4" style="background-color: white;">
+
+			<div class="row">
+				<div class="form">
+					<div id="database-form">
+						<form role="form" autocomplete="off">
+							<div class="form-group">
+								<label>name</label> <input type="text" class="form-control"
+									required />
+							</div>
+							<div class="form-group">
+								<label>HostName</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>URL</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>username</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>password</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Query</label>
+								<textarea rows="5" cols="10" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<button>save</button>
+							</div>
+
+						</form>
+					</div>
+
+					<div id="soap-form" ng-app="myApp" ng-controller="soapController">
+						<form role="form" autocomplete="off">
+							<div class="form-group">
+								<label>name</label> <input type="text" class="form-control"
+									ng-model="name" />
+							</div>
+							<div class="form-group">
+								<label>Endpoint </label> <input type="text" class="form-control"
+									ng-model="endpoint" />
+							</div>
+							<div class="form-group">
+								<label>XmlRequest</label>
+								<textarea rows="5" cols="10" class="form-control"
+									ng-model="xmlRequest"></textarea>
+							</div>
+							<div class="form-group">
+								<button>save</button>
+							</div>
+
+						</form>
+					</div>
+
+					<div id="rest-form">
+						<form role="form" autocomplete="off">
+							<div class="form-group">
+								<label>name</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>HostName</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>URL</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>username</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>password</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Query</label>
+								<textarea rows="5" cols="10" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<button>save</button>
+							</div>
+
+						</form>
+					</div>
+
+					<div id="shell-form">
+						<form role="form" autocomplete="off">
+							<div class="form-group">
+								<label>name</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>HostName</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>URL</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>username</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>password</label> <input type="text" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Query</label>
+								<textarea rows="5" cols="10" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<button>save</button>
+							</div>
+
+						</form>
+					</div>
+					<div id="Steps"></div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="col-sm-2" style="background-color: white;"></div>
+		<div class="col-sm-4" style="background-color: white;">
+			<div id="canvas"></div>
+		</div>
+	</div>
+	<nav class="navbar navbar-inverse navbar-fixed-bottom"></nav>
+</body>
+</html>

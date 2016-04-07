@@ -1,0 +1,18 @@
+{
+	"workflow": {
+		"workflow_id":1967,
+		"step": {
+			"name": "Venus change ctrl",
+			"type": "REST",
+			"input_type": "Previous Steps",
+			"Output_type": "Manual",
+			"db_details": {
+				"host_name": "10.101.9.242",
+				"port": "1521",
+				"username": "bi_readonly",
+				"password": "Infy123+",
+				"Query": "SELECT lst_dt_key FROM theframework.chg_ctrl_dw where job_nm = "
+			}
+		}
+	}
+}
